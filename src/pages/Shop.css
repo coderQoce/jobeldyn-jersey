@@ -1,0 +1,33 @@
+.shop-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f1ed;
+}
+
+.shop-top-nav {
+  background: #ffffff;
+  border-bottom: 1px solid #e8dfd6;
+  padding: 1rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #2c2c2c;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.back-home-btn:hover {
+  color: #c9a876;
+  transform: translateX(-4px);
+}

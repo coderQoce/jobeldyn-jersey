@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #050a14;
+  color: #f1f5f9;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0ea5e9;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0d9fd4;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 80px;
+}
+
+/* Typography */
+.font-bebas {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #0ea5e9, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Buttons */
+.btn-primary-custom {
+  background-color: #0ea5e9;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary-custom:hover {
+  background-color: #0d9fd4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
+.btn-accent-custom {
+  background-color: #f97316;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-accent-custom:hover {
+  background-color: #ea6f0d;
+  transform: translateY(-2px);
+}
+
+/* Cards */
+.card-custom {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card-custom:hover {
+  border-color: #0ea5e9;
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(14, 165, 233, 0.15);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(14, 165, 233, 0.6);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.6s ease-out;
+}
+
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 70px;
+  }
+
+  .font-bebas {
+    font-size: 1.5rem;
+  }
+}

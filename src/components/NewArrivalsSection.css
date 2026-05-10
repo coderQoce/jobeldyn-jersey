@@ -1,0 +1,158 @@
+.new-arrivals-section {
+  width: 100%;
+  background: #f5f1ed;
+  padding: 5rem 0;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.header-decoration {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d4d4d4, transparent);
+}
+
+.header-decoration.left {
+  background: linear-gradient(to right, transparent, #d4d4d4);
+}
+
+.header-decoration.right {
+  background: linear-gradient(to left, transparent, #d4d4d4);
+}
+
+.header-content {
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.header-subtitle {
+  font-size: 0.85rem;
+  color: #999;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0 0 0.75rem 0;
+  font-weight: 500;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #2c2c2c;
+  margin: 0 0 0.75rem 0;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.02em;
+}
+
+.header-description {
+  font-size: 0.95rem;
+  color: #999;
+  margin: 0;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .section-header {
+    gap: 2rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .header-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .new-arrivals-section {
+    padding: 3rem 0;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .header-decoration {
+    width: 60px;
+    height: 1px;
+  }
+
+  .header-decoration.left,
+  .header-decoration.right {
+    background: #d4d4d4;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .header-description {
+    font-size: 0.85rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-container {
+    padding: 0 1rem;
+  }
+
+  .new-arrivals-section {
+    padding: 2rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.7rem;
+  }
+
+  .header-description {
+    font-size: 0.8rem;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}

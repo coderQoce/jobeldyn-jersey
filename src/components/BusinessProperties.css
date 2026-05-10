@@ -1,0 +1,131 @@
+.business-properties {
+  width: 100%;
+  background: #f5f1ed;
+  padding: 4rem 0;
+  border-top: 1px solid #e8dfd6;
+}
+
+.properties-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.properties-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.property-item {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.property-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2c2c2c;
+}
+
+.property-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.02em;
+}
+
+.property-description {
+  margin: 0 0 1rem 0;
+  font-size: 0.85rem;
+  color: #999;
+  line-height: 1.6;
+}
+
+.property-link {
+  color: #2c2c2c;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: color 0.2s ease;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.property-link:hover {
+  color: #c9a876;
+}
+
+@media (max-width: 1024px) {
+  .properties-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .property-item {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .business-properties {
+    padding: 3rem 0;
+  }
+
+  .properties-container {
+    padding: 0 1.5rem;
+  }
+
+  .properties-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .property-title {
+    font-size: 0.95rem;
+  }
+
+  .property-description {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .business-properties {
+    padding: 2rem 0;
+  }
+
+  .properties-container {
+    padding: 0 1rem;
+  }
+
+  .properties-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .property-item {
+    padding: 1rem;
+  }
+
+  .property-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+  }
+
+  .property-title {
+    font-size: 0.9rem;
+  }
+}
