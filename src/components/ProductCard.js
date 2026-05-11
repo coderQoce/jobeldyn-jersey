@@ -24,30 +24,31 @@ const ProductCard = ({ product, onAddToCart }) => {
   const [selectedKit, setSelectedKit] = useState(versionLabels.kits ? versionLabels.kits[0] : null);
   const [selectedSize, setSelectedSize] = useState('M');
 
+  // Format price with thousand separators
+  const formatPrice = (price) => {
+    return Math.round(price).toLocaleString('en-US');
+  };
+
+  // Check if product is a jersey (eligible for customization)
+  const isJersey = !['Tracksuits', 'Socks', 'NFL Jerseys'].includes(product.category);
+
   // Get current price based on version and category
   const getCurrentPrice = () => {
     if (product.category === 'Tracksuits') {
-      return selectedVersion === 'Classic' ? product.classicPrice : product.elitePrice;
+      return product.price;
     }
     return selectedVersion === 'Fan' ? product.price : product.playerPrice;
   };
 
   const currentPrice = getCurrentPrice();
 
-  // Get current image based on version, kit, and category
+  // Get current image based on kit only (not version)
   const getCurrentImage = () => {
-    if (product.category === 'Tracksuits') {
-      return selectedVersion === 'Classic' ? product.image : product.playerImage;
-    }
-    if (['Retro', 'Special'].includes(product.category)) {
-      return selectedVersion === 'Fan' ? product.image : product.playerImage;
-    }
     if (product.category === 'Club' || product.category === 'Country') {
       if (product.kits && selectedKit) {
         const kitKey = selectedKit.toLowerCase();
         return product.kits[kitKey] || product.image;
       }
-      return selectedVersion === 'Fan' ? product.image : product.playerImage;
     }
     return product.image;
   };
@@ -115,7 +116,20 @@ const ProductCard = ({ product, onAddToCart }) => {
           </div>
         )}
 
-        <p className="product-price">$ {currentPrice.toFixed(2)} USD</p>
+        {isJersey ? (
+          <div className="product-prices">
+            <div className="price-item">
+              <span className="price-label">Plain</span>
+              <p className="product-price">₦ {formatPrice(currentPrice)}</p>
+            </div>
+            <div className="price-item">
+              <span className="price-label">Customized</span>
+              <p className="product-price">₦ {formatPrice(product.customizedPrice || currentPrice * 1.2)}</p>
+            </div>
+          </div>
+        ) : (
+          <p className="product-price">₦ {formatPrice(currentPrice)}</p>
+        )}
 
         {/* Size Selector */}
         <div className="size-selector">

@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, Minus, Plus, Trash2 } from 'lucide-react';
 import './Checkout.css';
 
+// Format price with thousand separators
+const formatPrice = (price) => {
+  return Math.round(price).toLocaleString('en-US');
+};
+
 const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -16,6 +21,9 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
     address: '',
     postalCode: '',
     deliveryOption: 'ibadan',
+    isCustomized: false,
+    jerseyName: '',
+    jerseyNumber: '',
   });
 
   const deliveryOptions = {
@@ -24,10 +32,19 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
     other: { name: 'Other States', price: 8000, range: '₦6,000 - ₦10,000' }
   };
 
-  const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  // Check if cart has any jerseys (for customization eligibility)
+  const hasJerseys = cartItems.some(item =>
+    !['Tracksuits', 'Socks', 'NFL Jerseys'].includes(item.category)
+  );
+
+  // Calculate subtotal with customization fee if applicable
+  let subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const CUSTOMIZATION_FEE = 3000; // Fixed ₦3,000 fee
+  const customizationFee = (formData.isCustomized && hasJerseys) ? CUSTOMIZATION_FEE : 0;
+  const subtotalWithCustomization = subtotal + customizationFee;
+
   const deliveryCost = deliveryOptions[formData.deliveryOption].price;
-  const subtotal = total;
-  const totalToPay = subtotal + deliveryCost;
+  const totalToPay = subtotalWithCustomization + deliveryCost;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -50,12 +67,15 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
       if (item.kit) message += `   Kit: ${item.kit}\n`;
       message += `   Size: ${item.size}\n`;
       message += `   Quantity: ${item.quantity}\n`;
-      message += `   Price: ₦${(item.price * item.quantity).toFixed(2)}\n\n`;
+      message += `   Price: ₦${formatPrice(item.price * item.quantity)}\n\n`;
     });
     message += `\n=== ORDER SUMMARY ===\n`;
-    message += `Subtotal: ₦${subtotal.toFixed(2)}\n`;
-    message += `Delivery (${deliveryOptions[formData.deliveryOption].name}): ₦${deliveryCost.toFixed(2)}\n`;
-    message += `Total: ₦${totalToPay.toFixed(2)}\n\n`;
+    message += `Subtotal: ₦${formatPrice(subtotal)}\n`;
+    if (formData.isCustomized && hasJerseys) {
+      message += `Customization Fee: ₦${formatPrice(customizationFee)}\n`;
+    }
+    message += `Delivery (${deliveryOptions[formData.deliveryOption].name}): ₦${formatPrice(deliveryCost)}\n`;
+    message += `Total: ₦${formatPrice(totalToPay)}\n\n`;
     message += `=== CUSTOMER INFORMATION ===\n`;
     message += `Name: ${formData.firstName} ${formData.lastName}\n`;
     message += `Email: ${formData.email}\n`;
@@ -66,6 +86,11 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
     message += `Address: ${formData.address}\n\n`;
     message += `=== DELIVERY OPTION ===\n`;
     message += `${deliveryOptions[formData.deliveryOption].name} (${deliveryOptions[formData.deliveryOption].range})\n\n`;
+    if (formData.isCustomized) {
+      message += `=== JERSEY CUSTOMIZATION ===\n`;
+      message += `Name: ${formData.jerseyName}\n`;
+      message += `Number: ${formData.jerseyNumber}\n\n`;
+    }
     message += 'Please confirm availability and proceed with payment.';
 
     const encodedMessage = encodeURIComponent(message);
@@ -190,6 +215,45 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
               <span>Other States - ₦6,000 - ₦10,000</span>
             </label>
           </div>
+
+          {hasJerseys && (
+            <div className="form-section">
+              <h3>Jersey Customization</h3>
+              <label className="checkbox-option">
+                <input
+                  type="checkbox"
+                  name="isCustomized"
+                  checked={formData.isCustomized}
+                  onChange={(e) => setFormData(prev => ({
+                    ...prev,
+                    isCustomized: e.target.checked
+                  }))}
+                />
+                <span>Customize Jersey (Add ₦3,000 to total)</span>
+              </label>
+
+              {formData.isCustomized && (
+                <div className="customization-fields">
+                  <div className="form-row">
+                    <input
+                      type="text"
+                      name="jerseyName"
+                      placeholder="Name to print on jersey"
+                      value={formData.jerseyName}
+                      onChange={handleInputChange}
+                    />
+                    <input
+                      type="text"
+                      name="jerseyNumber"
+                      placeholder="Jersey number"
+                      value={formData.jerseyNumber}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Right Column - Order Summary */}
@@ -210,7 +274,7 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
                       {item.kit && <span>{item.kit}</span>}
                       <span>Size {item.size}</span>
                     </div>
-                    <p className="item-price">${(item.price * item.quantity).toFixed(2)}</p>
+                    <p className="item-price">₦{formatPrice(item.price * item.quantity)}</p>
                   </div>
                   <div className="item-controls">
                     <div className="quantity-control">
@@ -239,15 +303,21 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
               <div className="order-totals">
                 <div className="total-row">
                   <span>Subtotal</span>
-                  <span>₦{subtotal.toFixed(2)}</span>
+                  <span>₦{formatPrice(subtotal)}</span>
                 </div>
+                {formData.isCustomized && (
+                  <div className="total-row">
+                    <span>Customization Fee (20%)</span>
+                    <span>₦{formatPrice(customizationFee)}</span>
+                  </div>
+                )}
                 <div className="total-row">
                   <span>Delivery cost</span>
-                  <span>₦{deliveryCost.toFixed(2)}</span>
+                  <span>₦{formatPrice(deliveryCost)}</span>
                 </div>
                 <div className="total-row grand-total">
                   <span>Total to pay</span>
-                  <span>₦{totalToPay.toFixed(2)}</span>
+                  <span>₦{formatPrice(totalToPay)}</span>
                 </div>
               </div>
 

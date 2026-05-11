@@ -105,11 +105,32 @@
   margin: 0 0.3rem;
 }
 
+.product-prices {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin: 0.25rem 0;
+}
+
+.price-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.price-label {
+  font-size: 0.7rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
 .product-price {
   margin: 0;
   font-size: 0.85rem;
   font-weight: 400;
-  color: #999;
+  color: #2c2c2c;
 }
 
 .size-selector {

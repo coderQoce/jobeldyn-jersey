@@ -1,38 +1,41 @@
 /* Modern Navbar Styles */
 .navbar-modern {
-  background: #ffffff;
+  background: transparent;
   border-radius: 0;
-  padding: 1.5rem 3rem;
-  margin: 0;
-  max-width: 100%;
-  width: 100%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 1rem 3.5rem;
+  margin: 1.5rem auto;
+  max-width: 95%;
+  width: fit-content;
+  box-shadow: none;
   position: relative;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: none;
 }
 
 .navbar-modern.navbar-in-hero {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  max-width: 95%;
   margin: 0;
-  transform: none;
   background: transparent;
   backdrop-filter: none;
   border-bottom: none;
   box-shadow: none;
-  padding: 1.5rem 3rem;
+  padding: 1rem 3.5rem;
+  border-radius: 0;
 }
 
 .navbar-modern-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2.5rem;
   max-width: 100%;
   margin: 0;
 }
@@ -84,7 +87,7 @@
 /* Desktop Navigation Menu */
 .navbar-menu-modern {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: center;
   flex: 1;
   justify-content: center;
@@ -92,7 +95,7 @@
 }
 
 .navbar-in-hero .navbar-menu-modern {
-  gap: 0.8rem;
+  gap: 2rem;
 }
 
 .nav-item-wrapper {
@@ -103,20 +106,25 @@
   color: #2c2c2c;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-link-modern:first-child {
+  background: none;
+  color: #2c2c2c;
+  padding: 0;
+  border-radius: 0;
+  font-weight: 500;
   white-space: nowrap;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 0;
-  border-radius: 0;
-  border-bottom: 2px solid transparent;
-  background: none;
   border: none;
   cursor: pointer;
   font-family: inherit;
-  position: relative;
 }
 
 .nav-link-modern:hover {

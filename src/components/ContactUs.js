@@ -50,9 +50,6 @@ const ContactUs = () => {
         {/* Left - Image */}
         <div className="contact-image">
           <img src="/Assets/contact-image.jpg" alt="Contact Us" />
-          <div className="image-overlay-box">
-            <span>REP YOUR CLUB</span>
-          </div>
         </div>
 
         {/* Right - Form */}
@@ -105,9 +102,9 @@ const ContactUs = () => {
                   required
                 ></textarea>
               </div>
-
+/
               <button type="submit" className="btn-send-message">
-                Send via WhatsApp
+                Send
               </button>
             </form>
           </div>

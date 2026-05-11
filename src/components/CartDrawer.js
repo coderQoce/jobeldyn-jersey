@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { X, Minus, Plus, Trash2 } from 'lucide-react';
 import './CartDrawer.css';
 
+// Format price with thousand separators
+const formatPrice = (price) => {
+  return Math.round(price).toLocaleString('en-US');
+};
+
 const CartDrawer = ({ isOpen, onClose, items, onUpdateQuantity, onRemove, onClearCart }) => {
   const navigate = useNavigate();
   const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -38,21 +43,21 @@ const CartDrawer = ({ isOpen, onClose, items, onUpdateQuantity, onRemove, onClea
                       {item.kit && <span className="meta-tag">{item.kit}</span>}
                       <span className="meta-tag">Size {item.size}</span>
                     </div>
-                    <p className="cart-item-price">$ {(item.price * item.quantity).toFixed(2)} USD</p>
+                    <p className="cart-item-price">₦{formatPrice(item.price * item.quantity)}</p>
                   </div>
                   <div className="cart-item-controls">
                     <div className="quantity-control">
-                      <button onClick={() => onUpdateQuantity(item.id, item.version, item.size, item.quantity - 1)}>
+                      <button onClick={() => onUpdateQuantity(item.id, item.version, item.size, item.kit, item.quantity - 1)}>
                         <Minus size={14} />
                       </button>
                       <span>{item.quantity}</span>
-                      <button onClick={() => onUpdateQuantity(item.id, item.version, item.size, item.quantity + 1)}>
+                      <button onClick={() => onUpdateQuantity(item.id, item.version, item.size, item.kit, item.quantity + 1)}>
                         <Plus size={14} />
                       </button>
                     </div>
                     <button
                       className="remove-btn"
-                      onClick={() => onRemove(item.id, item.version, item.size)}
+                      onClick={() => onRemove(item.id, item.version, item.size, item.kit)}
                     >
                       <Trash2 size={16} />
                     </button>
@@ -67,7 +72,7 @@ const CartDrawer = ({ isOpen, onClose, items, onUpdateQuantity, onRemove, onClea
           <div className="cart-footer">
             <div className="cart-total">
               <span>Total</span>
-              <span className="total-amount">$ {total.toFixed(2)} USD</span>
+              <span className="total-amount">₦ {formatPrice(total)}</span>
             </div>
             <button className="btn-checkout" onClick={() => {
               onClose();
