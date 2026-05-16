@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Heart, Search, Menu, X, ChevronDown } from 'lucide-react';
+import { ShoppingCart, Heart, Menu, X, ChevronDown } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = ({ cartCount, onCartClick, isInHero = false }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
 
   const handleNavClick = (target) => {
     window.location.href = `/#${target}`;
