@@ -102,7 +102,6 @@ const ContactUs = () => {
                   required
                 ></textarea>
               </div>
-/
               <button type="submit" className="btn-send-message">
                 Send
               </button>

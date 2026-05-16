@@ -296,6 +296,31 @@
   font-size: 1rem;
 }
 
+@media (max-width: 1024px) {
+  .product-section-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .category-sidebar {
+    width: 100%;
+    position: static;
+    height: auto;
+  }
+
+  .category-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .category-item {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
 @media (max-width: 768px) {
   .category-bar {
     padding: 1rem 0;
@@ -312,7 +337,7 @@
   }
 
   .product-section-container {
-    padding: 3rem 0;
+    padding: 2rem 0;
   }
 
   .category-products {
@@ -322,7 +347,7 @@
   .section-header {
     flex-direction: column;
     gap: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
   .header-decoration {
@@ -348,12 +373,35 @@
   }
 
   .products-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .search-bar-input {
+    min-width: 180px;
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
+  .product-section-wrapper {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .category-sidebar {
+    padding: 1rem;
+  }
+
+  .category-list {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .category-item {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
   .category-bar {
     padding: 0.75rem 0;
   }
@@ -368,7 +416,7 @@
   }
 
   .product-section-container {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
   }
 
   .category-products {
@@ -376,22 +424,30 @@
   }
 
   .section-header {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
   }
 
   .section-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .header-subtitle {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .header-description {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .products-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .search-bar-input {
+    min-width: 150px;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
   }
 }

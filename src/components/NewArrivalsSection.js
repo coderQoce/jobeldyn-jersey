@@ -7,29 +7,35 @@ const NewArrivalsSection = ({ onAddToCart }) => {
     {
       id: 1,
       name: 'Bayern New Season Jersey',
-      price: 912.98,
-      playerPrice: 1050.00,
+      price: 17000.00,
+      customizedPrice: 20000.00,
+      playerPrice: 25000.00,
+      playerCustomizedPrice: 28000.00,
       image: '/Assets/products/New Arrival/na1.jpg',
       playerImage: '/Assets/products/New Arrival/na1.jpg',
-      category: 'Shirts'
+      category: 'Club'
     },
     {
       id: 2,
       name: 'Dortmund',
-      price: 890.98,
-      playerPrice: 1020.00,
+      price: 17000.00,
+      customizedPrice: 20000.00,
+      playerPrice: 25000.00,
+      playerCustomizedPrice: 28000.00,
       image: '/Assets/products/New Arrival/na2.jpg',
       playerImage: '/Assets/products/New Arrival/na2.jpg',
-      category: 'Shirts'
+      category: 'Club'
     },
     {
       id: 3,
       name: 'PSG',
-      price: 629.98,
-      playerPrice: 750.00,
+      price: 17000.00,
+      customizedPrice: 20000.00,
+      playerPrice: 25000.00,
+      playerCustomizedPrice: 28000.00,
       image: '/Assets/products/New Arrival/na3.jpg',
       playerImage: '/Assets/products/New Arrival/na3.jpg',
-      category: 'Shirts'
+      category: 'Club'
     }
   ];
 

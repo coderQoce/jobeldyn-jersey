@@ -37,14 +37,11 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
     !['Tracksuits', 'Socks', 'NFL Jerseys'].includes(item.category)
   );
 
-  // Calculate subtotal with customization fee if applicable
+  // Calculate subtotal
   let subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const CUSTOMIZATION_FEE = 3000; // Fixed ₦3,000 fee
-  const customizationFee = (formData.isCustomized && hasJerseys) ? CUSTOMIZATION_FEE : 0;
-  const subtotalWithCustomization = subtotal + customizationFee;
 
   const deliveryCost = deliveryOptions[formData.deliveryOption].price;
-  const totalToPay = subtotalWithCustomization + deliveryCost;
+  const totalToPay = subtotal + deliveryCost;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -71,9 +68,6 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
     });
     message += `\n=== ORDER SUMMARY ===\n`;
     message += `Subtotal: ₦${formatPrice(subtotal)}\n`;
-    if (formData.isCustomized && hasJerseys) {
-      message += `Customization Fee: ₦${formatPrice(customizationFee)}\n`;
-    }
     message += `Delivery (${deliveryOptions[formData.deliveryOption].name}): ₦${formatPrice(deliveryCost)}\n`;
     message += `Total: ₦${formatPrice(totalToPay)}\n\n`;
     message += `=== CUSTOMER INFORMATION ===\n`;
@@ -305,12 +299,6 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
                   <span>Subtotal</span>
                   <span>₦{formatPrice(subtotal)}</span>
                 </div>
-                {formData.isCustomized && (
-                  <div className="total-row">
-                    <span>Customization Fee (20%)</span>
-                    <span>₦{formatPrice(customizationFee)}</span>
-                  </div>
-                )}
                 <div className="total-row">
                   <span>Delivery cost</span>
                   <span>₦{formatPrice(deliveryCost)}</span>

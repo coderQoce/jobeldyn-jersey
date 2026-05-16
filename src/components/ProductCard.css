@@ -198,52 +198,121 @@
   transform: translateX(4px);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .product-info {
-    padding: 1.25rem 0 0 0;
-    gap: 0.5rem;
+    padding: 1rem 0 0 0;
+    gap: 0.4rem;
   }
 
   .product-name {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .product-price {
-    font-size: 0.9rem;
-  }
-
-  .size-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 0.75rem;
-  }
-
-  .add-to-cart-btn {
     font-size: 0.85rem;
-    padding: 0.65rem 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .product-image-container {
-    padding-bottom: 110%;
   }
 
-  .product-info {
-    padding: 1rem 0 0 0;
-  }
-
-  .product-name {
-    font-size: 0.9rem;
-  }
-
-  .size-selector {
-    gap: 0.35rem;
+  .price-label {
+    font-size: 0.65rem;
   }
 
   .size-btn {
     width: 34px;
     height: 34px;
+    font-size: 0.7rem;
+  }
+
+  .add-to-cart-btn {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-info {
+    padding: 0.75rem 0 0 0;
+    gap: 0.35rem;
+  }
+
+  .product-name {
+    font-size: 0.85rem;
+  }
+
+  .product-price {
+    font-size: 0.8rem;
+  }
+
+  .price-label {
+    font-size: 0.6rem;
+  }
+
+  .product-prices {
+    gap: 1rem;
+  }
+
+  .size-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.65rem;
+  }
+
+  .size-selector {
+    gap: 0.25rem;
+  }
+
+  .add-to-cart-btn {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-image-container {
+    padding-bottom: 120%;
+  }
+
+  .product-info {
+    padding: 0.5rem 0 0 0;
+    gap: 0.25rem;
+  }
+
+  .product-name {
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .product-price {
+    font-size: 0.75rem;
+  }
+
+  .price-label {
+    font-size: 0.55rem;
+  }
+
+  .product-prices {
+    gap: 0.75rem;
+  }
+
+  .size-selector {
+    gap: 0.2rem;
+  }
+
+  .size-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.6rem;
+  }
+
+  .add-to-cart-btn {
+    font-size: 0.7rem;
+    margin-top: 0.15rem;
+  }
+
+  .kit-toggle,
+  .version-toggle {
+    font-size: 0.7rem;
+  }
+
+  .kit-link,
+  .version-link {
     font-size: 0.7rem;
   }
 }

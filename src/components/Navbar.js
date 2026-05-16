@@ -97,23 +97,8 @@ const Navbar = ({ cartCount, onCartClick, isInHero = false }) => {
             ))}
           </div>
 
-          {/* Search Input */}
-          {searchOpen && (
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="navbar-search-input"
-              autoFocus
-            />
-          )}
-
           {/* Icons */}
           <div className="navbar-icons-modern">
-            <button className="icon-btn-modern" onClick={() => setSearchOpen(!searchOpen)}>
-              <Search size={20} />
-            </button>
             <button className="icon-btn-modern">
               <Heart size={20} />
             </button>
@@ -161,7 +146,7 @@ const Navbar = ({ cartCount, onCartClick, isInHero = false }) => {
                       </div>
                     )}
                   </>
-                ) : (
+                ) : item.path ? (
                   <Link
                     to={item.path}
                     className="mobile-nav-link-modern"
@@ -169,27 +154,41 @@ const Navbar = ({ cartCount, onCartClick, isInHero = false }) => {
                   >
                     {item.name}
                   </Link>
+                ) : (
+                  <button
+                    className="mobile-nav-link-modern"
+                    onClick={() => {
+                      window.location.href = `/#${item.target}`;
+                      setMobileMenuOpen(false);
+                    }}
+                  >
+                    {item.name}
+                  </button>
                 )}
               </div>
             ))}
+
+            {/* Mobile Menu Icons */}
+            <div className="mobile-menu-icons">
+              <button className="mobile-icon-btn">
+                <Heart size={20} />
+                <span>Wishlist</span>
+              </button>
+              <button className="mobile-icon-btn" onClick={onCartClick}>
+                <ShoppingCart size={20} />
+                <span>Cart</span>
+                {cartCount > 0 && <span className="mobile-cart-badge">{cartCount}</span>}
+              </button>
+            </div>
           </div>
         )}
       </nav>
 
-      {/* Mobile Bottom Navigation */}
-      <div className="bottom-nav-mobile">
-        <Link to="/" className="bottom-nav-item">
-          <span>Home</span>
-        </Link>
-        <button className="bottom-nav-item">
-          <Search size={20} />
-        </button>
-        <button className="bottom-nav-item" onClick={onCartClick}>
+      {/* Mobile Bottom Cart Icon */}
+      <div className="bottom-cart-icon-mobile">
+        <button className="bottom-cart-btn" onClick={onCartClick}>
           <ShoppingCart size={20} />
           {cartCount > 0 && <span className="bottom-cart-badge">{cartCount}</span>}
-        </button>
-        <button className="bottom-nav-item">
-          <Heart size={20} />
         </button>
       </div>
     </>

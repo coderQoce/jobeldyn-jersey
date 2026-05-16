@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import './HeroSection.css';
 
 const HeroSection = ({ cartCount, onCartClick }) => {
+  const navigate = useNavigate();
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
   const heroImages = [
     '/Assets/hero1.jpg',
@@ -17,6 +19,14 @@ const HeroSection = ({ cartCount, onCartClick }) => {
     }, 5000);
     return () => clearInterval(interval);
   }, [heroImages.length]);
+
+  const handleShopNow = () => {
+    navigate('/shop');
+  };
+
+  const handleNewArrivals = () => {
+    window.location.href = '/#new-arrivals';
+  };
 
   const scrollToProducts = () => {
     const element = document.querySelector('.category-section');
@@ -38,10 +48,10 @@ const HeroSection = ({ cartCount, onCartClick }) => {
         <p className="hero-subtitle">Built For Champions • Driven By Culture • Inspired By Greatness</p>
         <p className="hero-description"></p>
         <div>
-          <button className="btn-hero" onClick={scrollToProducts}>
+          <button className="btn-hero" onClick={handleShopNow}>
             SHOP NOW
           </button>
-          <button className="btn-hero secondary" onClick={scrollToProducts}>
+          <button className="btn-hero secondary" onClick={handleNewArrivals}>
             NEW ARRIVALS
           </button>
         </div>

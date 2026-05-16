@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, ShoppingCart } from 'lucide-react';
 import ProductSection from '../components/ProductSection';
 import './Shop.css';
 
-const Shop = ({ onAddToCart }) => {
+const Shop = ({ onAddToCart, cartCount, onCartClick }) => {
   const navigate = useNavigate();
 
   return (
@@ -16,6 +16,14 @@ const Shop = ({ onAddToCart }) => {
         </button>
       </div>
       <ProductSection onAddToCart={onAddToCart} />
+
+      {/* Mobile Bottom Cart Icon */}
+      <div className="bottom-cart-icon-mobile">
+        <button className="bottom-cart-btn" onClick={onCartClick}>
+          <ShoppingCart size={20} />
+          {cartCount > 0 && <span className="bottom-cart-badge">{cartCount}</span>}
+        </button>
+      </div>
     </div>
   );
 };

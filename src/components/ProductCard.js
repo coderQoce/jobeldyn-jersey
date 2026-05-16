@@ -40,7 +40,17 @@ const ProductCard = ({ product, onAddToCart }) => {
     return selectedVersion === 'Fan' ? product.price : product.playerPrice;
   };
 
+  // Get customized price based on version
+  const getCustomizedPrice = () => {
+    if (selectedVersion === 'Fan') {
+      return product.customizedPrice;
+    } else {
+      return product.playerCustomizedPrice;
+    }
+  };
+
   const currentPrice = getCurrentPrice();
+  const customizedPrice = getCustomizedPrice();
 
   // Get current image based on kit only (not version)
   const getCurrentImage = () => {
@@ -124,7 +134,7 @@ const ProductCard = ({ product, onAddToCart }) => {
             </div>
             <div className="price-item">
               <span className="price-label">Customized</span>
-              <p className="product-price">₦ {formatPrice(product.customizedPrice || currentPrice * 1.2)}</p>
+              <p className="product-price">₦ {formatPrice(customizedPrice || currentPrice * 1.2)}</p>
             </div>
           </div>
         ) : (

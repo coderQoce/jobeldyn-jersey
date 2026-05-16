@@ -35,7 +35,8 @@ const NewArrivals = () => {
     {
       id: 4,
       name: 'Classic Jersey',
-      price: 750.00,
+      price: 17000.00,
+      customizedPrice: 20000.00,
       image: 'https://via.placeholder.com/250x300?text=Classic+Jersey',
       category: 'Jerseys'
     },
@@ -49,7 +50,8 @@ const NewArrivals = () => {
     {
       id: 6,
       name: 'Retro Football Jersey',
-      price: 850.00,
+      price: 17000.00,
+      customizedPrice: 20000.00,
       image: 'https://via.placeholder.com/250x300?text=Retro+Jersey',
       category: 'Retro'
     }
@@ -91,7 +93,20 @@ const NewArrivals = () => {
               </div>
               <div className="product-info">
                 <h3 className="product-name">{product.name}</h3>
-                <p className="product-price">$ {product.price.toFixed(2)} USD</p>
+                {product.customizedPrice ? (
+                  <div className="product-prices">
+                    <div className="price-item">
+                      <span className="price-label">Plain</span>
+                      <p className="product-price">₦{Math.round(product.price).toLocaleString('en-US')}</p>
+                    </div>
+                    <div className="price-item">
+                      <span className="price-label">Customized</span>
+                      <p className="product-price">₦{Math.round(product.customizedPrice).toLocaleString('en-US')}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="product-price">$ {product.price.toFixed(2)} USD</p>
+                )}
                 <button className="add-to-cart-link" onClick={() => handleAddToCart(product.id)}>Add to Cart <span>›</span></button>
               </div>
             </div>

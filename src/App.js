@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ShoppingCart } from 'lucide-react';
 import CartDrawer from './components/CartDrawer';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -60,18 +59,12 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home onAddToCart={addToCart} cartCount={cartItems.length} onCartClick={() => setCartOpen(true)} />} />
-            <Route path="/shop" element={<Shop onAddToCart={addToCart} />} />
+            <Route path="/shop" element={<Shop onAddToCart={addToCart} cartCount={cartItems.length} onCartClick={() => setCartOpen(true)} />} />
             <Route path="/checkout" element={<Checkout cartItems={cartItems} onUpdateQuantity={updateQuantity} onRemove={removeFromCart} />} />
             <Route path="/new-arrivals" element={<NewArrivals />} />
           </Routes>
         </main>
         <Footer />
-
-        {/* Fixed Cart Icon */}
-        <button className="fixed-cart-btn" onClick={() => setCartOpen(true)}>
-          <ShoppingCart size={22} />
-          {cartItems.length > 0 && <span className="fixed-cart-badge">{cartItems.length}</span>}
-        </button>
       </div>
     </Router>
   );
