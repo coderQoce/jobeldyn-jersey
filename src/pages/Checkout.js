@@ -32,11 +32,6 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
     other: { name: 'Other States', price: 8000, range: '₦6,000 - ₦10,000' }
   };
 
-  // Check if cart has any jerseys (for customization eligibility)
-  const hasJerseys = cartItems.some(item =>
-    !['Tracksuits', 'Socks', 'NFL Jerseys'].includes(item.category)
-  );
-
   // Calculate subtotal
   let subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
