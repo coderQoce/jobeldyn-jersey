@@ -19,8 +19,18 @@ const RequestJersey = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your request! We will get back to you soon.');
+
+    let message = `Hi JOBELDN! I would like to request a jersey:\n\n`;
+    message += `Jersey Name: ${formData.jerseyName}\n`;
+    message += `Type: ${formData.type}\n`;
+    message += `Version: ${formData.version}\n`;
+    message += `Size: ${formData.size}\n\n`;
+    message += 'Please check availability and let me know.';
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/2348125051801?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+
     setFormData({
       jerseyName: '',
       type: '',

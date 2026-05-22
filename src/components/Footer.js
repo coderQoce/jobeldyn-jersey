@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
@@ -20,17 +20,6 @@ const Footer = () => {
             <img src="/Assets/logo.jpg" alt="JOBELDN Logo" className="footer-logo-img" />
           </Link>
           <p className="footer-desc">Premium sports jerseys and apparel for champions.</p>
-          <div className="social-links">
-            <a href="#facebook" className="social-link">
-              <Facebook size={20} />
-            </a>
-            <a href="#instagram" className="social-link">
-              <Instagram size={20} />
-            </a>
-            <a href="#twitter" className="social-link">
-              <Twitter size={20} />
-            </a>
-          </div>
         </div>
 
         <div className="footer-section">
@@ -65,7 +54,11 @@ const Footer = () => {
           <div className="contact-info">
             <div className="contact-item">
               <Phone size={18} />
-              <span>+234 700 000 0000</span>
+              <span>08123409790</span>
+            </div>
+            <div className="contact-item">
+              <Phone size={18} />
+              <span>08125051801</span>
             </div>
             <div className="contact-item">
               <Mail size={18} />
@@ -73,7 +66,7 @@ const Footer = () => {
             </div>
             <div className="contact-item">
               <MapPin size={18} />
-              <span>Lagos, Nigeria</span>
+              <span>Oyo, Nigeria</span>
             </div>
           </div>
         </div>

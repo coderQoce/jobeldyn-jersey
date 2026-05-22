@@ -62,6 +62,11 @@
   line-height: 1.2;
 }
 
+.hero-title.gold-text,
+.hero-subtitle-main.gold-text {
+  color: #c9a876;
+}
+
 .hero-subtitle {
   font-size: 1rem;
   color: #666;

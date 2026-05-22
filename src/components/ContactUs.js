@@ -33,7 +33,7 @@ const ContactUs = () => {
     message += `Message:\n${formData.message}`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/2347000000000?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/2348125051801?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
 
     setFormData({

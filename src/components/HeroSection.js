@@ -43,8 +43,8 @@ const HeroSection = ({ cartCount, onCartClick }) => {
       <Navbar cartCount={cartCount} onCartClick={onCartClick} isInHero={true} />
 
       <div className="hero-content">
-        <h1 className="hero-title">WEAR THE PASSION</h1>
-        <h2 className="hero-subtitle-main">WEAR THE BADGE</h2>
+        <h1 className={`hero-title ${currentHeroIndex === 2 ? 'gold-text' : ''}`}>WEAR THE PASSION</h1>
+        <h2 className={`hero-subtitle-main ${currentHeroIndex === 2 ? 'gold-text' : ''}`}>WEAR THE BADGE</h2>
         <p className="hero-subtitle">Built For Champions • Driven By Culture • Inspired By Greatness</p>
         <p className="hero-description"></p>
         <div>

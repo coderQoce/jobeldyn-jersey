@@ -21,10 +21,10 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
     address: '',
     postalCode: '',
     deliveryOption: 'ibadan',
-    isCustomized: false,
-    jerseyName: '',
-    jerseyNumber: '',
   });
+
+  // Store customization data for each cart item
+  const [itemCustomization, setItemCustomization] = useState({});
 
   const deliveryOptions = {
     ibadan: { name: 'Ibadan', price: 3000, range: '₦2,000 - ₦4,000' },
@@ -41,13 +41,29 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
   let subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   const deliveryCost = deliveryOptions[formData.deliveryOption].price;
-  const totalToPay = subtotal + deliveryCost;
+
+  // Calculate customization fee based on number of customized items
+  const customizedItemCount = Object.values(itemCustomization).filter(custom => custom.isCustomized).length;
+  const customizationFee = customizedItemCount * 3000;
+
+  const totalToPay = subtotal + deliveryCost + customizationFee;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
+    }));
+  };
+
+  // Handle customization for individual items
+  const handleItemCustomization = (itemKey, field, value) => {
+    setItemCustomization(prev => ({
+      ...prev,
+      [itemKey]: {
+        ...prev[itemKey],
+        [field]: field === 'isCustomized' ? value : value,
+      }
     }));
   };
 
@@ -59,16 +75,24 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
 
     let message = 'Hi JOBELDN! I would like to order:\n\n';
     cartItems.forEach((item, index) => {
+      const itemKey = `${item.id}-${item.version}-${item.size}-${item.kit}`;
+      const custom = itemCustomization[itemKey];
       message += `${index + 1}. ${item.name}\n`;
       message += `   Version: ${item.version}\n`;
       if (item.kit) message += `   Kit: ${item.kit}\n`;
       message += `   Size: ${item.size}\n`;
       message += `   Quantity: ${item.quantity}\n`;
+      if (custom && custom.isCustomized) {
+        message += `   Customization: ${custom.jerseyName || 'N/A'} - ${custom.jerseyNumber || 'N/A'}\n`;
+      }
       message += `   Price: ₦${formatPrice(item.price * item.quantity)}\n\n`;
     });
     message += `\n=== ORDER SUMMARY ===\n`;
     message += `Subtotal: ₦${formatPrice(subtotal)}\n`;
     message += `Delivery (${deliveryOptions[formData.deliveryOption].name}): ₦${formatPrice(deliveryCost)}\n`;
+    if (customizedItemCount > 0) {
+      message += `Customization Fee (${customizedItemCount} item${customizedItemCount > 1 ? 's' : ''}): ₦${formatPrice(customizationFee)}\n`;
+    }
     message += `Total: ₦${formatPrice(totalToPay)}\n\n`;
     message += `=== CUSTOMER INFORMATION ===\n`;
     message += `Name: ${formData.firstName} ${formData.lastName}\n`;
@@ -88,7 +112,7 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
     message += 'Please confirm availability and proceed with payment.';
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/2347000000000?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/2348125051801?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -209,45 +233,6 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
               <span>Other States - ₦6,000 - ₦10,000</span>
             </label>
           </div>
-
-          {hasJerseys && (
-            <div className="form-section">
-              <h3>Jersey Customization</h3>
-              <label className="checkbox-option">
-                <input
-                  type="checkbox"
-                  name="isCustomized"
-                  checked={formData.isCustomized}
-                  onChange={(e) => setFormData(prev => ({
-                    ...prev,
-                    isCustomized: e.target.checked
-                  }))}
-                />
-                <span>Customize Jersey (Add ₦3,000 to total)</span>
-              </label>
-
-              {formData.isCustomized && (
-                <div className="customization-fields">
-                  <div className="form-row">
-                    <input
-                      type="text"
-                      name="jerseyName"
-                      placeholder="Name to print on jersey"
-                      value={formData.jerseyName}
-                      onChange={handleInputChange}
-                    />
-                    <input
-                      type="text"
-                      name="jerseyNumber"
-                      placeholder="Jersey number"
-                      value={formData.jerseyNumber}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
         </div>
 
         {/* Right Column - Order Summary */}
@@ -258,37 +243,70 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
             {cartItems.length === 0 ? (
               <p className="empty-cart">Your cart is empty</p>
             ) : (
-              cartItems.map((item) => (
-                <div key={`${item.id}-${item.version}-${item.size}-${item.kit}`} className="order-item">
-                  <img src={item.image} alt={item.name} className="item-image" />
-                  <div className="item-details">
-                    <h4>{item.name}</h4>
-                    <div className="item-meta">
-                      <span>{item.version}</span>
-                      {item.kit && <span>{item.kit}</span>}
-                      <span>Size {item.size}</span>
+              cartItems.map((item) => {
+                const itemKey = `${item.id}-${item.version}-${item.size}-${item.kit}`;
+                const custom = itemCustomization[itemKey] || {};
+                const isJersey = !['Tracksuits', 'Socks', 'NFL Jerseys'].includes(item.category);
+                return (
+                  <div key={itemKey} className="order-item">
+                    <img src={item.image} alt={item.name} className="item-image" />
+                    <div className="item-details">
+                      <h4>{item.name}</h4>
+                      <div className="item-meta">
+                        <span>{item.version}</span>
+                        {item.kit && <span>{item.kit}</span>}
+                        <span>Size {item.size}</span>
+                      </div>
+                      <p className="item-price">₦{formatPrice(item.price * item.quantity)}</p>
+                      {isJersey && (
+                        <div className="item-customization">
+                          <label className="item-customize-checkbox">
+                            <input
+                              type="checkbox"
+                              checked={custom.isCustomized || false}
+                              onChange={(e) => handleItemCustomization(itemKey, 'isCustomized', e.target.checked)}
+                            />
+                            <span>Customize (+₦3,000)</span>
+                          </label>
+                          {custom.isCustomized && (
+                            <div className="item-customize-inputs">
+                              <input
+                                type="text"
+                                placeholder="Name"
+                                value={custom.jerseyName || ''}
+                                onChange={(e) => handleItemCustomization(itemKey, 'jerseyName', e.target.value)}
+                              />
+                              <input
+                                type="text"
+                                placeholder="Number"
+                                value={custom.jerseyNumber || ''}
+                                onChange={(e) => handleItemCustomization(itemKey, 'jerseyNumber', e.target.value)}
+                              />
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
-                    <p className="item-price">₦{formatPrice(item.price * item.quantity)}</p>
-                  </div>
-                  <div className="item-controls">
-                    <div className="quantity-control">
-                      <button onClick={() => onUpdateQuantity(item.id, item.version, item.size, item.kit, item.quantity - 1)}>
-                        <Minus size={14} />
-                      </button>
-                      <span>{item.quantity}</span>
-                      <button onClick={() => onUpdateQuantity(item.id, item.version, item.size, item.kit, item.quantity + 1)}>
-                        <Plus size={14} />
+                    <div className="item-controls">
+                      <div className="quantity-control">
+                        <button onClick={() => onUpdateQuantity(item.id, item.version, item.size, item.kit, item.quantity - 1)}>
+                          <Minus size={14} />
+                        </button>
+                        <span>{item.quantity}</span>
+                        <button onClick={() => onUpdateQuantity(item.id, item.version, item.size, item.kit, item.quantity + 1)}>
+                          <Plus size={14} />
+                        </button>
+                      </div>
+                      <button
+                        className="remove-btn"
+                        onClick={() => onRemove(item.id, item.version, item.size, item.kit)}
+                      >
+                        <Trash2 size={16} />
                       </button>
                     </div>
-                    <button
-                      className="remove-btn"
-                      onClick={() => onRemove(item.id, item.version, item.size, item.kit)}
-                    >
-                      <Trash2 size={16} />
-                    </button>
                   </div>
-                </div>
-              ))
+                );
+              })
             )}
           </div>
 
@@ -303,6 +321,12 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
                   <span>Delivery cost</span>
                   <span>₦{formatPrice(deliveryCost)}</span>
                 </div>
+                {customizedItemCount > 0 && (
+                  <div className="total-row">
+                    <span>Customization fee ({customizedItemCount} item{customizedItemCount > 1 ? 's' : ''})</span>
+                    <span>₦{formatPrice(customizationFee)}</span>
+                  </div>
+                )}
                 <div className="total-row grand-total">
                   <span>Total to pay</span>
                   <span>₦{formatPrice(totalToPay)}</span>
