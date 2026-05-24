@@ -55,6 +55,17 @@ const Home = ({ onAddToCart, cartCount, onCartClick }) => {
         playerImage: '/Assets/products/Tracksuit/EliteVersion/e2.jpg',
         sizes: ['M', 'L', 'XL', 'XXL'],
       },
+      {
+        id: 87,
+        name: 'Classic Tracksuit',
+        category: 'Tracksuits',
+        price: 25000,
+        classicPrice: 25000,
+        elitePrice: 65000,
+        image: '/Assets/products/Tracksuit/ClassicVersion/c3.jpg',
+        playerImage: '/Assets/products/Tracksuit/EliteVersion/e3.jpg',
+        sizes: ['M', 'L', 'XL', 'XXL'],
+      },
     ],
     nfl: [
       {
