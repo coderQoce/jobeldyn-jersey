@@ -2,6 +2,7 @@ import React from 'react';
 import HeroSection from '../components/HeroSection';
 import NewArrivalsSection from '../components/NewArrivalsSection';
 import FeaturedProducts from '../components/FeaturedProducts';
+import WinnersJersey from '../components/WinnersJersey';
 import JerseyCreator from '../components/JerseyCreator';
 import RequestJersey from '../components/RequestJersey';
 import ContactUs from '../components/ContactUs';
@@ -210,6 +211,11 @@ const Home = ({ onAddToCart, cartCount, onCartClick }) => {
       {/* Featured Products Section */}
       <div id="featured">
         <FeaturedProducts onAddToCart={onAddToCart} />
+      </div>
+
+      {/* Winners Jersey Section */}
+      <div id="winners">
+        <WinnersJersey onAddToCart={onAddToCart} />
       </div>
 
       {/* Request Jersey Section */}

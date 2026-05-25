@@ -1,0 +1,170 @@
+.winners-jersey {
+  padding: 60px 20px;
+  background: #ffffff;
+  min-height: 400px;
+}
+
+.winners-header {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-decoration {
+  position: absolute;
+  top: 50%;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a876);
+}
+
+.header-decoration.left {
+  left: 0;
+  transform: translateX(-120px);
+}
+
+.header-decoration.right {
+  right: 0;
+  transform: translateX(120px);
+  background: linear-gradient(90deg, #c9a876, transparent);
+}
+
+.header-content {
+  padding: 0 20px;
+}
+
+.header-subtitle {
+  color: #c9a876;
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.header-description {
+  color: #666;
+  font-size: 16px;
+  margin: 0;
+}
+
+.winners-slider-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #c9a876;
+  color: #c9a876;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-button:hover {
+  background: #c9a876;
+  color: #ffffff;
+}
+
+.slider-button.prev {
+  left: 0;
+}
+
+.slider-button.next {
+  right: 0;
+}
+
+.winners-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #c9a876;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #c9a876;
+}
+
+.dot:hover {
+  background: #c9a876;
+}
+
+@media (max-width: 1200px) {
+  .winners-products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .winners-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .winners-slider-container {
+    padding: 0 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .winners-jersey {
+    padding: 40px 15px;
+  }
+
+  .header-decoration {
+    display: none;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .winners-products-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .winners-slider-container {
+    padding: 0 60px;
+  }
+}
