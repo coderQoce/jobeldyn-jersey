@@ -7,8 +7,8 @@ const FeaturedProducts = ({ onAddToCart }) => {
   const navigate = useNavigate();
 
   const products = [
-    { id: 1, name: 'Classic Tracksuit', category: 'Tracksuits', price: 25000.00, classicPrice: 25000.00, elitePrice: 65000.00, version: 'classic', image: '/Assets/products/Tracksuit/ClassicVersion/c3.jpg', playerImage: '/Assets/products/Tracksuit/EliteVersion/e1.jpg', sizes: ['M', 'L', 'XL', 'XXL'] },
-    { id: 4, name: 'NFL Jersey', category: 'NFL Jerseys', price: 18000, playerPrice: 18000, image: '/Assets/products/NFL/n1.jpg', playerImage: '/Assets/products/NFL/n1.jpg', sizes: ['S', 'M', 'L', 'XL', 'XXL'] },
+    { id: 1, name: 'Elite Tracksuit', category: 'Tracksuits', price: 65000.00, classicPrice: 25000.00, elitePrice: 65000.00, version: 'classic', image: '/Assets/products/Tracksuit/EliteVersion/e18.jpg', playerImage: '/Assets/products/Tracksuit/EliteVersion/e18.jpg', sizes: ['M', 'L', 'XL', 'XXL'] },
+    { id: 4, name: 'NFL Jersey', category: 'NFL Jerseys', price: 20000, playerPrice: 20000, image: '/Assets/products/NFL/n1.jpg', playerImage: '/Assets/products/NFL/n1.jpg', sizes: ['S', 'M', 'L', 'XL', 'XXL'] },
     { id: 60, name: 'NBA Socks', category: 'Socks', price: 5000, playerPrice: 5000, image: '/Assets/products/Socks/Nba.jpg', playerImage: '/Assets/products/Socks/Nba.jpg', sizes: ['One Size'] },
     { id: 10, name: 'Manchester United Retro Jersey', category: 'Retro Jerseys', price: 25000.00, customizedPrice: 28000.00, image: '/Assets/products/Retro Jersey/manchester-united2.jpg', playerImage: '/Assets/products/Retro Jersey/manchester-united2.jpg', sizes: ['M', 'L', 'XL', 'XXL'] },
     { id: 23, name: 'Arsenal', category: 'Club', price: 17000.00, customizedPrice: 20000.00, playerPrice: 25000.00, playerCustomizedPrice: 28000.00, kits: { home: '/Assets/products/Club Jersey/arsenal-home.jpg', away: '/Assets/products/Club Jersey/arsenal-away.jpg', third: '/Assets/products/Club Jersey/arsenal-third.jpg' }, image: '/Assets/products/Club Jersey/arsenal-home.jpg', playerImage: '/Assets/products/Club Jersey/arsenal-home.jpg', sizes: ['M', 'L', 'XL', 'XXL'] },

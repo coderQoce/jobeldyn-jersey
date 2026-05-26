@@ -64,13 +64,10 @@
   position: relative;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 50px;
+  padding: 0 20px;
 }
 
 .slider-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -91,25 +88,24 @@
   color: #ffffff;
 }
 
-.slider-button.prev {
-  left: 0;
-}
-
-.slider-button.next {
-  right: 0;
-}
-
 .winners-products-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+}
+
+.slider-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
 }
 
 .slider-dots {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 30px;
 }
 
 .dot {
@@ -132,17 +128,7 @@
 
 @media (max-width: 1200px) {
   .winners-products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .winners-products-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .winners-slider-container {
-    padding: 0 60px;
   }
 }
 
@@ -162,9 +148,5 @@
   .winners-products-grid {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .winners-slider-container {
-    padding: 0 60px;
   }
 }
