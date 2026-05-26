@@ -7,8 +7,8 @@ const NewArrivalsSection = ({ onAddToCart }) => {
     {
       id: 1,
       name: 'Bayern New Season Jersey',
-      price: 17000.00,
-      customizedPrice: 20000.00,
+      price: 20000.00,
+      customizedPrice: 23000.00,
       playerPrice: 25000.00,
       playerCustomizedPrice: 28000.00,
       image: '/Assets/products/New Arrival/na1.jpg',
@@ -18,8 +18,8 @@ const NewArrivalsSection = ({ onAddToCart }) => {
     {
       id: 2,
       name: 'Dortmund',
-      price: 17000.00,
-      customizedPrice: 20000.00,
+      price: 20000.00,
+      customizedPrice: 23000.00,
       playerPrice: 25000.00,
       playerCustomizedPrice: 28000.00,
       image: '/Assets/products/New Arrival/na2.jpg',
@@ -29,8 +29,8 @@ const NewArrivalsSection = ({ onAddToCart }) => {
     {
       id: 3,
       name: 'PSG',
-      price: 17000.00,
-      customizedPrice: 20000.00,
+      price: 20000.00,
+      customizedPrice: 23000.00,
       playerPrice: 25000.00,
       playerCustomizedPrice: 28000.00,
       image: '/Assets/products/New Arrival/na3.jpg',

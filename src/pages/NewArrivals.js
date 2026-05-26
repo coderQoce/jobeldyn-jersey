@@ -50,8 +50,8 @@ const NewArrivals = () => {
     {
       id: 6,
       name: 'Retro Football Jersey',
-      price: 20000.00,
-      customizedPrice: 23000.00,
+      price: 27000.00,
+      customizedPrice: 30000.00,
       image: 'https://via.placeholder.com/250x300?text=Retro+Jersey',
       category: 'Retro'
     }
