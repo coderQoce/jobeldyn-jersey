@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ProductCard.css';
 
-const ProductCard = ({ product, onAddToCart }) => {
+const ProductCard = ({ product, onAddToCart, hideKitToggle = false }) => {
   // Determine version labels and kit options based on category
   const getVersionLabels = () => {
     if (product.category === 'Tracksuits') {
@@ -10,10 +10,10 @@ const ProductCard = ({ product, onAddToCart }) => {
     if (['Retro', 'Special'].includes(product.category)) {
       return { v1: 'Fan', v2: 'Player', hasVersions: true };
     }
-    if (product.category === 'Club') {
+    if (product.category === 'Club' && !hideKitToggle) {
       return { hasKits: true, kits: ['Home', 'Away', 'Third'], hasVersions: true, v1: 'Fan', v2: 'Player' };
     }
-    if (product.category === 'Country') {
+    if (product.category === 'Country' && !hideKitToggle) {
       return { hasKits: true, kits: ['Home', 'Away'], hasVersions: true, v1: 'Fan', v2: 'Player' };
     }
     return { v1: 'Fan', v2: 'Player', hasVersions: false };
