@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, Minus, Plus, Trash2 } from 'lucide-react';
+import { ChevronLeft, Minus, Plus, Trash2, Info, Truck, Clock, Calendar, AlertCircle } from 'lucide-react';
 import './Checkout.css';
 
 // Format price with thousand separators
@@ -42,6 +42,12 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
   const customizationFee = customizedItemCount * 3000;
 
   const totalToPay = subtotal + deliveryCost + customizationFee;
+
+  // Check if any item in cart is a World Cup jersey
+  const hasWorldCupJersey = cartItems.some(item => 
+    item.name?.toLowerCase().includes('world cup') || 
+    item.category?.toLowerCase().includes('world cup')
+  );
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -227,6 +233,53 @@ const Checkout = ({ cartItems, onUpdateQuantity, onRemove }) => {
               />
               <span>Other States - ₦6,000 - ₦10,000</span>
             </label>
+          </div>
+
+          {/* Delivery Information Notes */}
+          <div className="delivery-info-notes">
+            <div className="info-note">
+              <div className="note-header">
+                <Truck size={18} />
+                <span>Delivery Timeline</span>
+              </div>
+              <p>Delivery in <strong>5-7 business days</strong> after dispatch</p>
+            </div>
+
+            <div className="info-note">
+              <div className="note-header">
+                <Clock size={18} />
+                <span>Dispatch Time</span>
+              </div>
+              <p><strong>24-42 hours</strong> dispatch time after order confirmation</p>
+            </div>
+
+            {customizedItemCount > 0 && (
+              <div className="info-note">
+                <div className="note-header">
+                  <Calendar size={18} />
+                  <span>Customization Delay</span>
+                </div>
+                <p><strong>+3-4 extra business days</strong> for customized jerseys</p>
+              </div>
+            )}
+
+            {hasWorldCupJersey && (
+              <div className="info-note world-cup-note">
+                <div className="note-header">
+                  <AlertCircle size={18} />
+                  <span>World Cup Rush</span>
+                </div>
+                <p>Due to high demand, <strong>World Cup jerseys require 2-3 extra business days</strong> for processing</p>
+              </div>
+            )}
+
+            <div className="info-note disclaimer">
+              <div className="note-header">
+                <Info size={18} />
+                <span>Please Note</span>
+              </div>
+              <p>Delivery times are estimates and may vary due to location, weather, or courier delays. You'll receive tracking info once your order is dispatched.</p>
+            </div>
           </div>
         </div>
 

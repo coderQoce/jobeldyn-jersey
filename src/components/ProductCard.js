@@ -143,7 +143,7 @@ const ProductCard = ({ product, onAddToCart, hideKitToggle = false }) => {
 
         {/* Size Selector */}
         <div className="size-selector">
-          {['M', 'L', 'XL', 'XXL'].map((size) => (
+          {['M', 'L', 'XL', 'XXL', 'XXXL'].map((size) => (
             <button
               key={size}
               className={`size-btn ${selectedSize === size ? 'active' : ''}`}
