@@ -76,7 +76,8 @@ const ProductSection = ({ onAddToCart }) => {
     socks: [
       { id: 60, name: 'NBA Socks', category: 'Socks', price: 6000, playerPrice: 6000, image: '/Assets/products/Socks/Nba.jpg', playerImage: '/Assets/products/Socks/Nba.jpg', sizes: ['One Size'] },
       { id: 61, name: 'Adidas & Nike Socks', category: 'Socks', price: 6000, playerPrice: 6000, image: '/Assets/products/Socks/adidas and nike collection.jpg', playerImage: '/Assets/products/Socks/adidas and nike collection.jpg', sizes: ['One Size'] },
-      { id: 86, name: 'Puma Socks', category: 'Socks', price: 6000, playerPrice: 6000, image: '/Assets/products/Socks/puma.jpg', playerImage: '/Assets/products/Socks/puma.jpg', sizes: ['One Size'] }
+      { id: 86, name: 'Puma Socks', category: 'Socks', price: 6000, playerPrice: 6000, image: '/Assets/products/Socks/puma.jpg', playerImage: '/Assets/products/Socks/puma.jpg', sizes: ['One Size'] },
+      { id: 63, name: 'Grip Socks', category: 'Socks', price: 15000, playerPrice: 15000, image: '/Assets/products/Socks/Grip socks.jpg', playerImage: '/Assets/products/Socks/Grip socks.jpg', sizes: ['One Size'] }
     ],
     teens: [
       { id: 13, name: 'Arsenal Teen Jersey', category: 'Teens', price: 17000.00, customizedPrice: 20000.00, image: '/Assets/products/Teen/arsenal-teen.jpg', playerImage: '/Assets/products/Teen/arsenal-teen.jpg', sizes: ['M', 'L', 'XL', 'XXL', 'XXXL'] },

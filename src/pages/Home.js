@@ -6,6 +6,7 @@ import WinnersJersey from '../components/WinnersJersey';
 import JerseyCreator from '../components/JerseyCreator';
 import RequestJersey from '../components/RequestJersey';
 import ContactUs from '../components/ContactUs';
+import VideoSection from '../components/VideoSection';
 import './Home.css';
 
 const Home = ({ onAddToCart, cartCount, onCartClick }) => {
@@ -193,6 +194,11 @@ const Home = ({ onAddToCart, cartCount, onCartClick }) => {
       <div id="request-jersey">
         <RequestJersey />
       </div>
+
+      {/* VideoSection */}
+
+      <VideoSection/>
+
 
       {/* Jersey Creator Section (Carousel) */}
       <JerseyCreator />
