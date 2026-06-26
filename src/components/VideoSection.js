@@ -8,9 +8,9 @@ const VideoSection = () => {
   const videoUrl = '/Assets/videos/video1.MOV';
   
   const videoData = {
-    title: 'Jobeldyn Jersey',
+    title: 'Jobeldn Jersey',
     subtitle: 'Premium Quality • Custom Design',
-    description: 'Watch our models wear their passion and wear the batch with pride.'
+    description: 'Watch our models wear their passion and wear the badge with pride.'
   };
 
   const handlePlayPause = () => {
