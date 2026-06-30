@@ -5,7 +5,7 @@ const VideoSection = () => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const videoUrl = '/Assets/videos/video1.MOV';
+  const videoUrl = '/Assets/videos/2.mp4';
   
   const videoData = {
     title: 'Jobeldn Jersey',
