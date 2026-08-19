@@ -22,7 +22,7 @@ const ProductCard = ({ product, onAddToCart, hideKitToggle = false }) => {
   const versionLabels = getVersionLabels();
   const [selectedVersion, setSelectedVersion] = useState(versionLabels.v1 || 'Fan');
   const [selectedKit, setSelectedKit] = useState(versionLabels.kits ? versionLabels.kits[0] : null);
-  const [selectedSize, setSelectedSize] = useState('M');
+  const [selectedSize, setSelectedSize] = useState(product.sizes?.[0] || 'M');
 
   // Format price with thousand separators
   const formatPrice = (price) => {
@@ -143,7 +143,7 @@ const ProductCard = ({ product, onAddToCart, hideKitToggle = false }) => {
 
         {/* Size Selector */}
         <div className="size-selector">
-          {['M', 'L', 'XL', 'XXL', 'XXXL'].map((size) => (
+          {(product.sizes || ['M', 'L', 'XL', 'XXL', 'XXXL']).map((size) => (
             <button
               key={size}
               className={`size-btn ${selectedSize === size ? 'active' : ''}`}
